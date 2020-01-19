@@ -1,9 +1,9 @@
 public class Task {
-    private String toDo;
-    private boolean done;
+    String instr;
+    boolean done;
 
-    public Task (String toDo) {
-        this.toDo = toDo;
+    public Task (String instr) {
+        this.instr = instr;
         this.done = false;
     }
 
@@ -14,9 +14,9 @@ public class Task {
     @Override
     public String toString() {
         if (done) {
-            return "[DONE] " + this.toDo;
+            return "[DONE] " + this.instr;
         } else {
-            return "[INCOMPLETE] " + this.toDo;
+            return "[INCOMPLETE] " + this.instr;
         }
     }
 }
