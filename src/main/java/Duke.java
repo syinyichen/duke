@@ -30,7 +30,23 @@ public class Duke {
                 }
                 System.out.println(line);
             } else {
-                if (command.equals("done")) {
+                if (command.equals("delete")) {
+                    int index = sc.nextInt();
+                    try {
+                        if (index <= tasks.size()) {
+                            Task delTask = tasks.get(index - 1);
+                            tasks.remove(index - 1);
+                            System.out.println(line + "\nNoted. I've removed this task:  \n" + delTask + "\n"
+                                    + "Now you have " + tasks.size() + " tasks in the list.\n" + line);
+                        } else {
+                            throw new DukeException("Invalid Delete Description");
+                        }
+                    } catch (DukeException ex) {
+                        System.out.println("____________________________________________________________\n" +
+                                "OOPS!!! The task is unavailable.\n" +
+                                "____________________________________________________________");
+                    }
+                } else if (command.equals("done")) {
                     int index = sc.nextInt();
                     try {
                         if (index <= tasks.size()) {
