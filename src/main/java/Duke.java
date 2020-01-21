@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 
 public class Duke {
@@ -12,7 +11,6 @@ public class Duke {
         String line = "____________________________________________________________";
         ArrayList<Task> tasks = new ArrayList<Task>();
         Scanner sc = new Scanner(System.in);
-        PrintStream printStream = new PrintStream(System.out, true, "UTF-8");;
 
         //Greeting
         System.out.println(line + "\nHello! I'm Duke\nWhat can I do for you?\n" + line);
@@ -27,18 +25,34 @@ public class Duke {
             } else if (command.equals("list")) {
                 System.out.println(line + "\nHere are the tasks in your list: ");
                 for (int i = 0; i < tasks.size(); i++) {
-                    printStream.println(i + 1 + ". " + tasks.get(i));
+                    System.out.println(i + 1 + ". " + tasks.get(i));
                 }
                 System.out.println(line);
             } else {
                 try {
-                    if (command.equals("done")) {
+                    if (command.equals("delete")) {
+                        int n = sc.nextInt();
+                        try {
+                            if (n <= tasks.size()) {
+                                Task delTask = tasks.get(n - 1);
+                                tasks.remove(n - 1);
+                                System.out.println(line + "\nNoted. I've removed this task: \n" + delTask
+                                        + "\nNow you have " + tasks.size() + " tasks in the list.\n" + line);
+                            } else {
+                                throw new DukeException("Invalid Task Index");
+                            }
+                        } catch (DukeException ex) {
+                            System.out.println("____________________________________________________________\n" +
+                                    "OOPS!!! The task is unavailable.\n" +
+                                    "____________________________________________________________");
+                        }
+                    } else if (command.equals("done")) {
                         int n = sc.nextInt();
                         try {
                             if (n <= tasks.size()) {
                                 Task doneTask = tasks.get(n - 1);
                                 doneTask.done();
-                                printStream.println(line + "\nNice! I've marked this task as done: \n" + doneTask + "\n" + line);
+                                System.out.println(line + "\nNice! I've marked this task as done: \n" + doneTask + "\n" + line);
                             } else {
                                 throw new DukeException("Invalid Task Index");
                             }
