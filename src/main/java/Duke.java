@@ -31,30 +31,79 @@ public class Duke {
                 }
                 System.out.println(line);
             } else {
-                if (command.equals("done")) {
-                    Task doneTask = tasks.get(sc.nextInt() - 1);
-                    doneTask.done();
-                    printStream.println(line + "\nNice! I've marked this task as done: \n" + doneTask + "\n" + line);
-                } else if (command.equals("todo")) {
-                    String input = sc.nextLine();
-                    Todo newTask = new Todo(input);
-                    tasks.add(newTask);
-                    System.out.println(line + "\n" + "Got it. I've added this task: \n" + newTask
-                            + "\nNow you have " + tasks.size() + " tasks in the list.\n" + line);
-                } else if (command.equals("deadline")) {
-                    String input = sc.nextLine();
-                    String[] splitTime = input.split(" /by ");
-                    Deadline newTask = new Deadline(splitTime[0], splitTime[1]);
-                    tasks.add(newTask);
-                    System.out.println(line + "\n" + "Got it. I've added this task: \n" + newTask
-                            + "\nNow you have " + tasks.size() + " tasks in the list.\n" + line);
-                } else if (command.equals("event")) {
-                    String input = sc.nextLine();
-                    String[] splitTime = input.split(" /at ");
-                    Event newTask = new Event(splitTime[0], splitTime[1]);
-                    tasks.add(newTask);
-                    System.out.println(line + "\n" + "Got it. I've added this task: \n" + newTask
-                            + "\nNow you have " + tasks.size() + " tasks in the list.\n" + line);
+                try {
+                    if (command.equals("done")) {
+                        int n = sc.nextInt();
+                        try {
+                            if (n <= tasks.size()) {
+                                Task doneTask = tasks.get(n - 1);
+                                doneTask.done();
+                                printStream.println(line + "\nNice! I've marked this task as done: \n" + doneTask + "\n" + line);
+                            } else {
+                                throw new DukeException("Invalid Task Index");
+                            }
+                        } catch (DukeException ex) {
+                            System.out.println("____________________________________________________________\n" +
+                                    "OOPS!!! The task is unavailable.\n" +
+                                    "____________________________________________________________");
+                        }
+                    } else if (command.equals("todo")) {
+                        String input = sc.nextLine();
+                        try {
+                            if (!input.isEmpty()) {
+                                Todo newTask = new Todo(input);
+                                tasks.add(newTask);
+                                System.out.println(line + "\n" + "Got it. I've added this task: \n" + newTask
+                                        + "\nNow you have " + tasks.size() + " tasks in the list.\n" + line);
+                            } else {
+                                throw new DukeException("Invalid Done Description");
+                            }
+                        } catch (DukeException ex) {
+                            System.out.println("____________________________________________________________\n" +
+                                    "OOPS!!! The description of a todo cannot be empty.\n" +
+                                    "____________________________________________________________");
+                        }
+                    } else if (command.equals("deadline")) {
+                        String input = sc.nextLine();
+                        try {
+                            if (!input.isEmpty()) {
+                                String[] splitTime = input.split(" /by ");
+                                Deadline newTask = new Deadline(splitTime[0], splitTime[1]);
+                                tasks.add(newTask);
+                                System.out.println(line + "\n" + "Got it. I've added this task: \n" + newTask
+                                        + "\nNow you have " + tasks.size() + " tasks in the list.\n" + line);
+                            } else {
+                                throw new DukeException("Invalid Deadline Description");
+                            }
+                        } catch (DukeException ex) {
+                            System.out.println("____________________________________________________________\n" +
+                                    "OOPS!!! The description of a deadline cannot be empty.\n" +
+                                    "____________________________________________________________");
+                        }
+                    } else if (command.equals("event")) {
+                        String input = sc.nextLine();
+                        try {
+                            if (!input.isEmpty()) {
+                                String[] splitTime = input.split(" /at ");
+                                Event newTask = new Event(splitTime[0], splitTime[1]);
+                                tasks.add(newTask);
+                                System.out.println(line + "\n" + "Got it. I've added this task: \n" + newTask
+                                        + "\nNow you have " + tasks.size() + " tasks in the list.\n" + line);
+                            } else {
+                                throw new DukeException("Invalid Event Description");
+                            }
+                        } catch (DukeException ex) {
+                            System.out.println("____________________________________________________________\n" +
+                                    "OOPS!!! The description of a deadline cannot be empty.\n" +
+                                    "____________________________________________________________");
+                        }
+                    } else {
+                        throw new DukeException("Invalid Command");
+                    }
+                } catch (DukeException ex) {
+                    System.out.println("____________________________________________________________\n" +
+                            "OOPS!!! I'm sorry, but I don't know what that means :-(\n" +
+                            "____________________________________________________________");
                 }
             }
         }
