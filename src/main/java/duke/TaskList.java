@@ -99,6 +99,16 @@ public class TaskList {
         }
     }
 
+    public ArrayList<Task> find(String keyword) {
+        ArrayList<Task> foundList = new ArrayList<Task>();
+        for (Task t: taskList) {
+            if (t.getInstr().contains(keyword)) {
+                foundList.add(t);
+            }
+        }
+        return foundList;
+    }
+
     public ArrayList<Task> getTaskList() {
         return this.taskList;
     }

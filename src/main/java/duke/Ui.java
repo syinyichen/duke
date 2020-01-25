@@ -25,6 +25,10 @@ public class Ui {
         System.out.println(line + "\nHere are the tasks in your list: \n" + taskList + line);
     }
 
+    public void findList(TaskList taskList) {
+        System.out.println(line + "\nHere are the matching tasks in your list: \n" + taskList + line);
+    }
+
     public void delete(Task delTask, int totalTask) {
         System.out.println(line + "\nNoted. I've removed this task: \n" + delTask
                 + "\nNow you have " + totalTask + " tasks in the list.\n" + line);
