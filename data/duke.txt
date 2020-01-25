@@ -1,7 +1,8 @@
-D | 1 | return book | Jun 6 2019 18:00
-E | 0 | project meeting | Aug 6 2020 14:00
+D | 1 | return book | 2019-12-10 1800
+E | 1 | project meeting | 2020-08-06 1400
 T | 1 | join sports club
 T | 0 | read book
-D | 0 | project submission | Jan 25 2020 11:00
-E | 1 | group meeting | Mar 1 2020 03:00
-D | 0 | read book | Aug 7 2019 14:00
+D | 0 | project submission | 2020-09-01 1100
+D | 1 | read book | 2019-08-07 1400
+T | 0 | read book
+D | 0 | submit project | 2018-09-08 1300
