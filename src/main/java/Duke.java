@@ -1,8 +1,11 @@
-import java.util.*;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 
 public class Duke {
-    public static void main(String[] args) throws UnsupportedEncodingException {
+    public static void main(String[] args) throws UnsupportedEncodingException, FileNotFoundException, IOException {
+        File file = new File("C:/Users/syiny/Desktop/Study/CS2103T/duke/data/duke.txt");
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -10,15 +13,40 @@ public class Duke {
                 + "|____/ \\__,_|_|\\_\\___|\n";
         String line = "____________________________________________________________";
         ArrayList<Task> tasks = new ArrayList<Task>();
+        Scanner scFile = new Scanner(file);
         Scanner sc = new Scanner(System.in);
+
+        //Read file
+        while (scFile.hasNextLine()) {
+            String fileInput = scFile.nextLine();
+            String[] splitted = fileInput.split(" \\| ");
+            if (splitted[0].equals("T")) {
+                Todo newTask = new Todo(" " + splitted[2]);
+                if (splitted[1].equals("1")) {
+                    newTask.done();
+                }
+                tasks.add(newTask);
+            } else if (splitted[0].equals("D")) {
+                Deadline newTask = new Deadline(" " + splitted[2], splitted[3]);
+                if (splitted[1].equals("1")) {
+                    newTask.done();
+                }
+                tasks.add(newTask);
+            } else if (splitted[0].equals("E")) {
+                Event newTask = new Event(" " + splitted[2], splitted[3]);
+                if (splitted[1].equals("1")) {
+                    newTask.done();
+                }
+                tasks.add(newTask);
+            }
+        }
 
         //Greeting
         System.out.println(line + "\nHello! I'm Duke\nWhat can I do for you?\n" + line);
 
-        //Tasks
+        //Input
         while (sc.hasNextLine()) {
             String command = sc.next();
-
             if (command.equals("bye")) {
                 System.out.println(line + "\nBye. Hope to see you again soon!\n" + line);
                 break;
@@ -42,9 +70,7 @@ public class Duke {
                                 throw new DukeException("Invalid Task Index");
                             }
                         } catch (DukeException ex) {
-                            System.out.println("____________________________________________________________\n" +
-                                    "OOPS!!! The task is unavailable.\n" +
-                                    "____________________________________________________________");
+                            System.out.println(line + "\n" + "OOPS!!! The task is unavailable.\n" + line);
                         }
                     } else if (command.equals("done")) {
                         int n = sc.nextInt();
@@ -52,14 +78,13 @@ public class Duke {
                             if (n <= tasks.size()) {
                                 Task doneTask = tasks.get(n - 1);
                                 doneTask.done();
-                                System.out.println(line + "\nNice! I've marked this task as done: \n" + doneTask + "\n" + line);
+                                System.out.println(line + "\nNice! I've marked this task as done: \n" + doneTask + "\n"
+                                        + line);
                             } else {
                                 throw new DukeException("Invalid Task Index");
                             }
                         } catch (DukeException ex) {
-                            System.out.println("____________________________________________________________\n" +
-                                    "OOPS!!! The task is unavailable.\n" +
-                                    "____________________________________________________________");
+                            System.out.println(line + "\n" + "OOPS!!! The task is unavailable.\n" + line);
                         }
                     } else if (command.equals("todo")) {
                         String input = sc.nextLine();
@@ -73,9 +98,8 @@ public class Duke {
                                 throw new DukeException("Invalid Done Description");
                             }
                         } catch (DukeException ex) {
-                            System.out.println("____________________________________________________________\n" +
-                                    "OOPS!!! The description of a todo cannot be empty.\n" +
-                                    "____________________________________________________________");
+                            System.out.println(line + "\n" + "OOPS!!! The description of a todo cannot be empty.\n"
+                                    + line);
                         }
                     } else if (command.equals("deadline")) {
                         String input = sc.nextLine();
@@ -90,9 +114,8 @@ public class Duke {
                                 throw new DukeException("Invalid Deadline Description");
                             }
                         } catch (DukeException ex) {
-                            System.out.println("____________________________________________________________\n" +
-                                    "OOPS!!! The description of a deadline cannot be empty.\n" +
-                                    "____________________________________________________________");
+                            System.out.println(line + "\n" + "OOPS!!! The description of a deadline cannot be empty.\n"
+                                    + line);
                         }
                     } else if (command.equals("event")) {
                         String input = sc.nextLine();
@@ -107,20 +130,37 @@ public class Duke {
                                 throw new DukeException("Invalid Event Description");
                             }
                         } catch (DukeException ex) {
-                            System.out.println("____________________________________________________________\n" +
-                                    "OOPS!!! The description of a deadline cannot be empty.\n" +
-                                    "____________________________________________________________");
+                            System.out.println(line + "\n" + "OOPS!!! The description of a deadline cannot be empty.\n"
+                                    + line);
                         }
                     } else {
                         throw new DukeException("Invalid Command");
                     }
                 } catch (DukeException ex) {
-                    System.out.println("____________________________________________________________\n" +
-                            "OOPS!!! I'm sorry, but I don't know what that means :-(\n" +
-                            "____________________________________________________________");
+                    System.out.println(line + "\n" + "OOPS!!! I'm sorry, but I don't know what that means :-(\n"
+                            + line);
                 }
             }
         }
 
+        //Write file
+        FileWriter fileWriter = new FileWriter(
+                "C:/Users/syiny/Desktop/Study/CS2103T/duke/data/duke.txt");
+        for (Task t: tasks) {
+            int isDone = 0;
+            if (t.isDone()) {
+                isDone = 1;
+            }
+            if (t instanceof Todo) {
+                fileWriter.write("T | " + isDone + " |" + t.getInstr() + System.lineSeparator());
+            } else if (t instanceof Deadline) {
+                fileWriter.write("D | " + isDone + " |" + t.getInstr() + " | "
+                        + ((Deadline) t).getTime() + System.lineSeparator());
+            } else if (t instanceof Event) {
+                fileWriter.write("E | " + isDone + " |" + t.getInstr() + " | "
+                        + ((Event) t).getTime() + System.lineSeparator());
+            }
+        }
+        fileWriter.close();
     }
 }
