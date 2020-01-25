@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 
 public class Duke {
@@ -27,13 +29,17 @@ public class Duke {
                 }
                 tasks.add(newTask);
             } else if (splitted[0].equals("D")) {
-                Deadline newTask = new Deadline(" " + splitted[2], splitted[3]);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+                Deadline newTask = new Deadline(" " + splitted[2],
+                        LocalDateTime.parse(splitted[3], formatter));
                 if (splitted[1].equals("1")) {
                     newTask.done();
                 }
                 tasks.add(newTask);
             } else if (splitted[0].equals("E")) {
-                Event newTask = new Event(" " + splitted[2], splitted[3]);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+                Event newTask = new Event(" " + splitted[2],
+                        LocalDateTime.parse(splitted[3], formatter));
                 if (splitted[1].equals("1")) {
                     newTask.done();
                 }
@@ -106,7 +112,9 @@ public class Duke {
                         try {
                             if (!input.isEmpty()) {
                                 String[] splitTime = input.split(" /by ");
-                                Deadline newTask = new Deadline(splitTime[0], splitTime[1]);
+                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+                                Deadline newTask = new Deadline(splitTime[0],
+                                        LocalDateTime.parse(splitTime[1], formatter));
                                 tasks.add(newTask);
                                 System.out.println(line + "\n" + "Got it. I've added this task: \n" + newTask
                                         + "\nNow you have " + tasks.size() + " tasks in the list.\n" + line);
@@ -122,7 +130,8 @@ public class Duke {
                         try {
                             if (!input.isEmpty()) {
                                 String[] splitTime = input.split(" /at ");
-                                Event newTask = new Event(splitTime[0], splitTime[1]);
+                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+                                Event newTask = new Event(splitTime[0], LocalDateTime.parse(splitTime[1], formatter));
                                 tasks.add(newTask);
                                 System.out.println(line + "\n" + "Got it. I've added this task: \n" + newTask
                                         + "\nNow you have " + tasks.size() + " tasks in the list.\n" + line);
@@ -155,10 +164,12 @@ public class Duke {
                 fileWriter.write("T | " + isDone + " |" + t.getInstr() + System.lineSeparator());
             } else if (t instanceof Deadline) {
                 fileWriter.write("D | " + isDone + " |" + t.getInstr() + " | "
-                        + ((Deadline) t).getTime() + System.lineSeparator());
+                        + ((Deadline) t).getTime().format(DateTimeFormatter.ofPattern("MMM d yyyy HH:mm"))
+                        + System.lineSeparator());
             } else if (t instanceof Event) {
                 fileWriter.write("E | " + isDone + " |" + t.getInstr() + " | "
-                        + ((Event) t).getTime() + System.lineSeparator());
+                        + ((Event) t).getTime().format(DateTimeFormatter.ofPattern("MMM d yyyy HH:mm"))
+                        + System.lineSeparator());
             }
         }
         fileWriter.close();

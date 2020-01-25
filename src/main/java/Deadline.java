@@ -1,12 +1,16 @@
-public class Deadline extends Task {
-    String time;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-    public Deadline(String instr, String time) {
+public class Deadline extends Task {
+    LocalDateTime time;
+
+    public Deadline(String instr, LocalDateTime time) {
         super(instr);
         this.time = time;
     }
 
-    public String getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
@@ -14,7 +18,8 @@ public class Deadline extends Task {
         if (super.done) {
             return "[D][DONE]" + super.instr;
         } else {
-            return "[D][INCOMPLETE]" + super.instr + " (by: " + time + ")";
+            return "[D][INCOMPLETE]" + super.instr + " (by: "
+                    + time.format(DateTimeFormatter.ofPattern("MMM d yyyy HH:mm")) + ")";
         }
     }
 }
