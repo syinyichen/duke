@@ -5,6 +5,9 @@ import duke.TaskList;
 import duke.DukeException;
 import java.util.Scanner;
 
+/**
+ * A class which scans the user input and decides which task to be carried out.
+ */
 public class Parser {
     private Scanner sc;
     private Ui ui;
@@ -16,6 +19,9 @@ public class Parser {
         this.taskList = taskList;
     }
 
+    /**
+     * Scans the user inputs and calls necessary methods based on the command input by the user.
+     */
     public void run() {
         while (sc.hasNextLine()) {
             String command = sc.next();
