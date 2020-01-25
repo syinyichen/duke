@@ -3,6 +3,8 @@ package duke;
 import duke.Ui;
 import duke.TaskList;
 import duke.DukeException;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -47,6 +49,10 @@ public class Parser {
                     } else if (command.equals("event")) {
                         String input = sc.nextLine();
                         taskList.addEvent(input);
+                    } else if (command.equals("find")) {
+                        String input = sc.nextLine();
+                        ArrayList<Task> foundList = taskList.find(input);
+                        ui.findList(new TaskList(foundList, ui));
                     } else {
                         throw new DukeException("Invalid Command");
                     }

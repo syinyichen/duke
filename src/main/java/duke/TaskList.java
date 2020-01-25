@@ -134,6 +134,21 @@ public class TaskList {
     }
 
     /**
+     * Returns a list of tasks that contains the <code>keyword</code>.
+     *
+     * @param keyword Search keyword.
+     */
+    public ArrayList<Task> find(String keyword) {
+        ArrayList<Task> foundList = new ArrayList<Task>();
+        for (Task t: taskList) {
+            if (t.getInstr().contains(keyword)) {
+                foundList.add(t);
+            }
+        }
+        return foundList;
+    }
+
+    /**
      * A getter for the list.
      */
     public ArrayList<Task> getTaskList() {

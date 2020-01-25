@@ -38,6 +38,15 @@ public class Ui {
     }
 
     /**
+     * Prints the list of search results.
+     *
+     * @param taskList List of tasks.
+     */
+    public void findList(TaskList taskList) {
+        System.out.println(line + "\nHere are the matching tasks in your list: \n" + taskList + line);
+    }
+
+    /**
      * Prints a message to notify the user that a task is deleted.
      *
      * @param delTask Task to be deleted.
