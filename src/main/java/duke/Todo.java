@@ -1,5 +1,8 @@
 package duke;
 
+/**
+ * Represents a to-do.
+ */
 public class Todo extends Task {
     public Todo (String instr) {
         super(instr);

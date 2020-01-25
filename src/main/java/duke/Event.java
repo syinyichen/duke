@@ -3,6 +3,9 @@ package duke;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents an event.
+ */
 public class Event extends Task {
     LocalDateTime time;
 
@@ -11,6 +14,9 @@ public class Event extends Task {
         this.time = time;
     }
 
+    /**
+     * Getter for the <code>time</code> of <code>Event</code>.
+     */
     public LocalDateTime getTime() {
         return time;
     }

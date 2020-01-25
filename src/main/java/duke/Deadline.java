@@ -3,6 +3,9 @@ package duke;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents a deadline.
+ */
 public class Deadline extends Task {
     LocalDateTime time;
 
@@ -11,6 +14,9 @@ public class Deadline extends Task {
         this.time = time;
     }
 
+    /**
+     * Getter for the <code>time</code> of <code>Deadline</code>.
+     */
     public LocalDateTime getTime() {
         return time;
     }

@@ -15,6 +15,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Represents the file where the tasks input by the user are store at.
+ */
 public class Storage {
     private ArrayList<Task> taskList;
     private String filePath;
@@ -28,6 +31,11 @@ public class Storage {
         this.taskList = new ArrayList<Task>();
     }
 
+    /**
+     * Reads the <code>file</code> and adds each task to the <code>taskList</code>.
+     *
+     * @throws DukeException If the format of text in the file is incorrect.
+     */
     public ArrayList<Task> load() throws DukeException {
         while (scFile.hasNextLine()) {
             String fileInput = scFile.nextLine();
@@ -61,6 +69,12 @@ public class Storage {
         return this.taskList;
     }
 
+    /**
+     * Reads the <code>file</code> and adds each task to the <code>taskList</code>.
+     *
+     * @param tasks A list which stores the tasks.
+     * @throws IOException If the file is unavailable for writing.
+     */
     public void writeStorage(TaskList tasks) throws IOException {
         FileWriter fileWriter = new FileWriter(filePath);
         for (Task t: tasks.getTaskList()) {
