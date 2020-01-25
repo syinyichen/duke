@@ -1,5 +1,7 @@
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.io.UnsupportedEncodingException;
+import java.time.LocalDateTime;
 
 public class Duke {
     public static void main(String[] args) throws UnsupportedEncodingException {
@@ -82,7 +84,9 @@ public class Duke {
                         try {
                             if (!input.isEmpty()) {
                                 String[] splitTime = input.split(" /by ");
-                                Deadline newTask = new Deadline(splitTime[0], splitTime[1]);
+                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+                                Deadline newTask = new Deadline(splitTime[0],
+                                        LocalDateTime.parse(splitTime[1], formatter));
                                 tasks.add(newTask);
                                 System.out.println(line + "\n" + "Got it. I've added this task: \n" + newTask
                                         + "\nNow you have " + tasks.size() + " tasks in the list.\n" + line);
@@ -99,7 +103,8 @@ public class Duke {
                         try {
                             if (!input.isEmpty()) {
                                 String[] splitTime = input.split(" /at ");
-                                Event newTask = new Event(splitTime[0], splitTime[1]);
+                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+                                Event newTask = new Event(splitTime[0], LocalDateTime.parse(splitTime[1], formatter));
                                 tasks.add(newTask);
                                 System.out.println(line + "\n" + "Got it. I've added this task: \n" + newTask
                                         + "\nNow you have " + tasks.size() + " tasks in the list.\n" + line);
