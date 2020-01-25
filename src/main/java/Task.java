@@ -11,6 +11,14 @@ public class Task {
         this.done = true;
     }
 
+    public String getInstr() {
+        return instr;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
     @Override
     public String toString() {
         if (done) {
