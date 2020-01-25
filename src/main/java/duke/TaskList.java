@@ -1,3 +1,11 @@
+package duke;
+
+import duke.Task;
+import duke.Ui;
+import duke.DukeException;
+import duke.Todo;
+import duke.Deadline;
+import duke.Event;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

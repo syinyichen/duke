@@ -1,4 +1,11 @@
+package duke;
+
 import java.io.*;
+import duke.Ui;
+import duke.Parser;
+import duke.TaskList;
+import duke.Storage;
+import duke.DukeException;
 
 public class Duke {
     private Ui ui;

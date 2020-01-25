@@ -4,5 +4,4 @@ T | 1 | join sports club
 T | 0 | read book
 D | 0 | project submission | 2020-09-01 1100
 D | 1 | read book | 2019-08-07 1400
-T | 0 | read book
 D | 0 | submit project | 2018-09-08 1300

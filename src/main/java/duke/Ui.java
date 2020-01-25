@@ -1,3 +1,7 @@
+package duke;
+
+import duke.Task;
+
 public class Ui {
     String logo = " ____        _        \n"
             + "|  _ \\ _   _| | _____ \n"
