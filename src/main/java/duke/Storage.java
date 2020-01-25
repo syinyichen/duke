@@ -69,14 +69,17 @@ public class Storage {
                 isDone = 1;
             }
             if (t instanceof Todo) {
-                fileWriter.write("T | " + isDone + " |" + t.getInstr() + System.lineSeparator());
+                fileWriter.write("T | " + isDone + " |"
+                        + t.getInstr() + System.lineSeparator());
             } else if (t instanceof Deadline) {
                 fileWriter.write("D | " + isDone + " |" + t.getInstr() + " | "
-                        + ((Deadline) t).getTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"))
+                        + ((Deadline) t).getTime().format(DateTimeFormatter
+                            .ofPattern("yyyy-MM-dd HHmm"))
                         + System.lineSeparator());
             } else if (t instanceof Event) {
                 fileWriter.write("E | " + isDone + " |" + t.getInstr() + " | "
-                        + ((Event) t).getTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"))
+                        + ((Event) t).getTime().format(DateTimeFormatter
+                            .ofPattern("yyyy-MM-dd HHmm"))
                         + System.lineSeparator());
             }
         }

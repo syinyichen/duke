@@ -3,11 +3,6 @@ package duke;
 import duke.Task;
 
 public class Ui {
-    String logo = " ____        _        \n"
-            + "|  _ \\ _   _| | _____ \n"
-            + "| | | | | | | |/ / _ \\\n"
-            + "| |_| | |_| |   <  __/\n"
-            + "|____/ \\__,_|_|\\_\\___|\n";
     String line = "____________________________________________________________";
 
     public Ui() { }
@@ -22,7 +17,8 @@ public class Ui {
     }
 
     public void list(TaskList taskList) {
-        System.out.println(line + "\nHere are the tasks in your list: \n" + taskList + line);
+        System.out.println(line + "\nHere are the tasks in your list: \n" + taskList
+                + line);
     }
 
     public void delete(Task delTask, int totalTask) {
@@ -31,8 +27,8 @@ public class Ui {
     }
 
     public void done(Task doneTask) {
-        System.out.println(line + "\nNice! I've marked this task as done: \n" + doneTask + "\n"
-                + line);
+        System.out.println(line + "\nNice! I've marked this task as done: \n"
+                + doneTask + "\n" + line);
     }
 
     public void addTask(Task newTask, int totalTask) {
@@ -42,12 +38,13 @@ public class Ui {
 
     //Print exceptions
     public void showLoadingError() {
-        System.out.println(line + "\n" + "OOPS!!! Unable to read the tasks in the file.\n" + line);
+        System.out.println(line + "\n"
+                + "OOPS!!! Unable to read the tasks in the file.\n" + line);
     }
 
     public void showInvalidCommand() {
-        System.out.println(line + "\n" + "OOPS!!! I'm sorry, but I don't know what that means :-(\n"
-                + line);
+        System.out.println(line + "\n"
+                + "OOPS!!! I'm sorry, but I don't know what that means :-(\n" + line);
     }
 
     public void showInvalidTaskIndex() {
@@ -55,17 +52,17 @@ public class Ui {
     }
 
     public void showInvalidTodoDesc() {
-        System.out.println(line + "\n" + "OOPS!!! The description of a todo cannot be empty.\n"
-                + line);
+        System.out.println(line + "\n"
+                + "OOPS!!! The description of a todo cannot be empty.\n" + line);
     }
 
     public void showInvalidDeadlineDesc() {
-        System.out.println(line + "\n" + "OOPS!!! The description of a deadline cannot be empty.\n"
-                + line);
+        System.out.println(line + "\n"
+                + "OOPS!!! The description of a deadline cannot be empty.\n" + line);
     }
 
     public void showInvalidEventDesc() {
-        System.out.println(line + "\n" + "OOPS!!! The description of a deadline cannot be empty.\n"
-                + line);
+        System.out.println(line + "\n"
+                + "OOPS!!! The description of a deadline cannot be empty.\n" + line);
     }
 }
