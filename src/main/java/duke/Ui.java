@@ -8,11 +8,6 @@ import java.io.FileNotFoundException;
  * Represents the user interface. <code>Ui</code> outputs messages and interacts with the user.
  */
 public class Ui {
-    String logo = " ____        _        \n"
-            + "|  _ \\ _   _| | _____ \n"
-            + "| | | | | | | |/ / _ \\\n"
-            + "| |_| | |_| |   <  __/\n"
-            + "|____/ \\__,_|_|\\_\\___|\n";
     String line = "____________________________________________________________";
 
     public Ui() { }
@@ -38,7 +33,8 @@ public class Ui {
      * @param taskList A list which stores the tasks input by the user.
      */
     public void list(TaskList taskList) {
-        System.out.println(line + "\nHere are the tasks in your list: \n" + taskList + line);
+        System.out.println(line + "\nHere are the tasks in your list: \n" + taskList
+                + line);
     }
 
     /**
@@ -58,8 +54,8 @@ public class Ui {
      * @param doneTask Task that is completed
      */
     public void done(Task doneTask) {
-        System.out.println(line + "\nNice! I've marked this task as done: \n" + doneTask + "\n"
-                + line);
+        System.out.println(line + "\nNice! I've marked this task as done: \n"
+                + doneTask + "\n" + line);
     }
 
     /**
@@ -78,15 +74,16 @@ public class Ui {
      * Prints a message to warn the user when unable to read a file.
      */
     public void showLoadingError() {
-        System.out.println(line + "\n" + "OOPS!!! Unable to read the tasks in the file.\n" + line);
+        System.out.println(line + "\n"
+                + "OOPS!!! Unable to read the tasks in the file.\n" + line);
     }
 
     /**
      * Prints a message to warn the user when the system is unable to recognise the command.
      */
     public void showInvalidCommand() {
-        System.out.println(line + "\n" + "OOPS!!! I'm sorry, but I don't know what that means :-(\n"
-                + line);
+        System.out.println(line + "\n"
+                + "OOPS!!! I'm sorry, but I don't know what that means :-(\n" + line);
     }
 
     /**
@@ -101,23 +98,23 @@ public class Ui {
      * Prints a message to warn the user when the description for a to-do is empty.
      */
     public void showInvalidTodoDesc() {
-        System.out.println(line + "\n" + "OOPS!!! The description of a todo cannot be empty.\n"
-                + line);
+        System.out.println(line + "\n"
+                + "OOPS!!! The description of a todo cannot be empty.\n" + line);
     }
 
     /**
      * Prints a message to warn the user when the description for a deadline is empty.
      */
     public void showInvalidDeadlineDesc() {
-        System.out.println(line + "\n" + "OOPS!!! The description of a deadline cannot be empty.\n"
-                + line);
+        System.out.println(line + "\n"
+                + "OOPS!!! The description of a deadline cannot be empty.\n" + line);
     }
 
     /**
      * Prints a message to warn the user when the description for a event is empty.
      */
     public void showInvalidEventDesc() {
-        System.out.println(line + "\n" + "OOPS!!! The description of a deadline cannot be empty.\n"
-                + line);
+        System.out.println(line + "\n"
+                + "OOPS!!! The description of a deadline cannot be empty.\n" + line);
     }
 }

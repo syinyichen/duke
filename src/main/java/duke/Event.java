@@ -26,7 +26,8 @@ public class Event extends Task {
             return "[E][DONE]" + super.instr;
         } else {
             return "[E][INCOMPLETE]" + super.instr + " (at: "
-                    + time.format(DateTimeFormatter.ofPattern("MMM d yyyy HH:mm")) + ")";
+                    + time.format(DateTimeFormatter.ofPattern("MMM d yyyy HH:mm"))
+                    + ")";
         }
     }
 }

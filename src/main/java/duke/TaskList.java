@@ -121,7 +121,8 @@ public class TaskList {
             if (!instr.isEmpty()) {
                 String[] splitTime = instr.split(" /at ");
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-                Event newTask = new Event(splitTime[0], LocalDateTime.parse(splitTime[1], formatter));
+                Event newTask = new Event(splitTime[0],
+                        LocalDateTime.parse(splitTime[1], formatter));
                 taskList.add(newTask);
                 ui.addTask(newTask, taskList.size());
             } else {
