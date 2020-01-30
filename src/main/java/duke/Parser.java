@@ -15,6 +15,12 @@ public class Parser {
     private Ui ui;
     private TaskList taskList;
 
+    /**
+     * Constructor of the class Parser.
+     *
+     * @param ui The UI used for Duke.
+     * @param taskList A list of tasks.
+     */
     public Parser(Ui ui, TaskList taskList) {
         sc = new Scanner(System.in);
         this.ui = ui;

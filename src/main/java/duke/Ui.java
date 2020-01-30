@@ -10,7 +10,9 @@ import java.io.FileNotFoundException;
 public class Ui {
     String line = "____________________________________________________________";
 
-    public Ui() { }
+    public Ui() {
+
+    }
 
     //Responses
     /**
@@ -21,7 +23,7 @@ public class Ui {
     }
 
     /**
-     * Bids farewell after the user input "bye"
+     * Bids farewell after the user input "bye".
      */
     public void bye() {
         System.out.println(line + "\nBye. Hope to see you again soon!\n" + line);

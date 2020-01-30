@@ -12,7 +12,7 @@ public class Task {
     String instr;
     boolean done;
 
-    public Task (String instr) {
+    public Task(String instr) {
         this.instr = instr;
         this.done = false;
     }

@@ -21,6 +21,7 @@ public class Event extends Task {
         return time;
     }
 
+    @Override
     public String toString() {
         if (super.done) {
             return "[E][DONE]" + super.instr;

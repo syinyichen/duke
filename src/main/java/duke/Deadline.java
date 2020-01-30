@@ -21,6 +21,7 @@ public class Deadline extends Task {
         return time;
     }
 
+    @Override
     public String toString() {
         if (super.done) {
             return "[D][DONE]" + super.instr;

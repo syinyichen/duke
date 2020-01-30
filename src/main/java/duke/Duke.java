@@ -1,6 +1,7 @@
 package duke;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import duke.Ui;
 import duke.Parser;
 import duke.TaskList;

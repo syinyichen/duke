@@ -24,6 +24,12 @@ public class Storage {
     private File file;
     private Scanner scFile;
 
+    /**
+     * Constructor of the class, Storage.
+     *
+     * @param filePath Path of the file to store the output.
+     * @throws FileNotFoundException If the file to store the output is not found.
+     */
     public Storage(String filePath) throws FileNotFoundException {
         this.filePath = filePath;
         this.file = new File(filePath);
