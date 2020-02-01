@@ -1,6 +1,5 @@
 package duke;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,10 +11,6 @@ import javafx.stage.Stage;
  * <code>Duke</code> is a chatbox that keep tracks of various tasks.
  */
 public class Duke extends Application {
-    private Ui ui;
-    private Parser parser;
-    private TaskList taskList;
-    private Storage storage;
 
     public Duke() {
 
