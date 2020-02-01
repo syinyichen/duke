@@ -1,11 +1,5 @@
 package duke;
 
-import duke.Task;
-import duke.DukeException;
-import duke.Todo;
-import duke.Deadline;
-import duke.Event;
-import duke.TaskList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;

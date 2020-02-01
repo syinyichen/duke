@@ -1,7 +1,5 @@
 package duke;
 
-import java.io.FileNotFoundException;
-
 /**
  * Represents a task which an user input in the <code>Duke</code> chatbox.
  * A <code>Task</code> consists of 2 components:

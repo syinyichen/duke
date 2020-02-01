@@ -7,7 +7,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import seedu.duke.DukeStub;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * Controller for MainWindow. Provides the layout for the other controls.
@@ -22,12 +24,35 @@ public class MainWindow extends AnchorPane {
     @FXML
     private Button sendButton;
 
+    private Parser parser;
+    private Ui ui;
+    private TaskList taskList;
+    private Storage storage;
     private Image user = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private Image duke = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+    private String filePath = "C:/Users/syiny/Desktop/Study/CS2103T/duke/data/duke.txt";
 
     @FXML
-    public void initialize() {
+    public void initialize() throws FileNotFoundException {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+
+        ui = new Ui();
+        storage = new Storage(filePath);
+        try {
+            taskList = new TaskList(storage.load(), ui);
+        } catch (DukeException e) {
+            String err = DukeStub.getResponse("OOPS!!! Unable to read the tasks in the file.");
+            dialogContainer.getChildren().addAll(
+                    DialogBox.getDukeDialog(err, duke)
+            );
+            taskList = new TaskList(ui);
+        }
+
+        //Greets the user
+        String greet = DukeStub.getResponse("Hello! I'm Duke\nWhat can I do for you?");
+        dialogContainer.getChildren().addAll(
+                DialogBox.getDukeDialog(greet, duke)
+        );
     }
 
     /**
@@ -35,14 +60,15 @@ public class MainWindow extends AnchorPane {
      * the dialog container. Clears the user input after processing.
      */
     @FXML
-    private void handleUserInput() {
+    private void handleUserInput() throws IOException {
         String input = userInput.getText();
-        String response = DukeStub.getResponse(input);
+        parser = new Parser(ui, taskList, input);
+        String response = DukeStub.getResponse(parser.run());
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, user),
                 DialogBox.getDukeDialog(response, duke)
         );
         userInput.clear();
+        storage.writeStorage(taskList);
     }
-
 }

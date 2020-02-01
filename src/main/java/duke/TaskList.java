@@ -1,11 +1,5 @@
 package duke;
 
-import duke.Task;
-import duke.Ui;
-import duke.DukeException;
-import duke.Todo;
-import duke.Deadline;
-import duke.Event;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -33,18 +27,20 @@ public class TaskList {
      * @param index Index of a task in the list.
      * @throws DukeException If the index input is unavailable in the list of tasks.
      */
-    public void delete(int index) {
+    public String delete(int index) {
+        String output = "";
         try {
             if (index <= taskList.size()) {
                 Task delTask = taskList.get(index - 1);
                 taskList.remove(index - 1);
-                ui.delete(delTask, taskList.size());
+                output = ui.delete(delTask, taskList.size());
             } else {
                 throw new DukeException("Invalid Task Index");
             }
         } catch (DukeException ex) {
-            ui.showInvalidTaskIndex();
+            output = ui.showInvalidTaskIndex();
         }
+        return output;
     }
 
     /**
@@ -53,18 +49,20 @@ public class TaskList {
      * @param index Index of a task in the list.
      * @throws DukeException If the index input is unavailable in the list of tasks.
      */
-    public void done(int index) {
+    public String done(int index) {
+        String output = "";
         try {
             if (index <= taskList.size()) {
                 Task doneTask = taskList.get(index - 1);
                 doneTask.done();
-                ui.done(doneTask);
+                output = ui.done(doneTask);
             } else {
                 throw new DukeException("Invalid Task Index");
             }
         } catch (DukeException ex) {
-            ui.showInvalidTaskIndex();
+            output = ui.showInvalidTaskIndex();
         }
+        return output;
     }
 
     /**
@@ -73,18 +71,20 @@ public class TaskList {
      * @param instr Description of the to-do.
      * @throws DukeException If the description of the to-do is empty.
      */
-    public void addTodo(String instr) {
+    public String addTodo(String instr) {
+        String output = "";
         try {
             if (!instr.isEmpty()) {
                 Todo newTask = new Todo(instr);
                 taskList.add(newTask);
-                ui.addTask(newTask, taskList.size());
+                output = ui.addTask(newTask, taskList.size());
             } else {
                 throw new DukeException("Invalid Todo Description");
             }
         } catch (DukeException ex) {
-            ui.showInvalidTodoDesc();
+           output = ui.showInvalidDesc();
         }
+        return output;
     }
 
     /**
@@ -93,7 +93,8 @@ public class TaskList {
      * @param instr Description of the deadline.
      * @throws DukeException If the description of the deadline is empty.
      */
-    public void addDeadline(String instr) {
+    public String addDeadline(String instr) {
+        String output = "";
         try {
             if (!instr.isEmpty()) {
                 String[] splitTime = instr.split(" /by ");
@@ -101,13 +102,14 @@ public class TaskList {
                 Deadline newTask = new Deadline(splitTime[0],
                         LocalDateTime.parse(splitTime[1], formatter));
                 taskList.add(newTask);
-                ui.addTask(newTask, taskList.size());
+                output = ui.addTask(newTask, taskList.size());
             } else {
                 throw new DukeException("Invalid Deadline Description");
             }
         } catch (DukeException ex) {
-            ui.showInvalidDeadlineDesc();
+            output = ui.showInvalidDesc();
         }
+        return output;
     }
 
     /**
@@ -116,7 +118,8 @@ public class TaskList {
      * @param instr Description of the event.
      * @throws DukeException If the description of the event is empty.
      */
-    public void addEvent(String instr) {
+    public String addEvent(String instr) {
+        String output = "";
         try {
             if (!instr.isEmpty()) {
                 String[] splitTime = instr.split(" /at ");
@@ -124,13 +127,14 @@ public class TaskList {
                 Event newTask = new Event(splitTime[0],
                         LocalDateTime.parse(splitTime[1], formatter));
                 taskList.add(newTask);
-                ui.addTask(newTask, taskList.size());
+                output = ui.addTask(newTask, taskList.size());
             } else {
                 throw new DukeException("Invalid Event Description");
             }
         } catch (DukeException ex) {
-            ui.showInvalidEventDesc();
+            output = ui.showInvalidDesc();
         }
+        return output;
     }
 
     /**

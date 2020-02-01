@@ -1,17 +1,12 @@
 package duke;
 
-import duke.Ui;
-import duke.TaskList;
-import duke.DukeException;
-
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * A class which scans the user input and decides which task to be carried out.
  */
 public class Parser {
-    private Scanner sc;
+    private String input;
     private Ui ui;
     private TaskList taskList;
 
@@ -21,8 +16,8 @@ public class Parser {
      * @param ui The UI used for Duke.
      * @param taskList A list of tasks.
      */
-    public Parser(Ui ui, TaskList taskList) {
-        sc = new Scanner(System.in);
+    public Parser(Ui ui, TaskList taskList, String input) {
+        this.input = input;
         this.ui = ui;
         this.taskList = taskList;
     }
@@ -30,41 +25,39 @@ public class Parser {
     /**
      * Scans the user inputs and calls necessary methods based on the command input by the user.
      */
-    public void run() {
-        while (sc.hasNextLine()) {
-            String command = sc.next();
-            if (command.equals("bye")) {
-                ui.bye();
-                break;
-            } else if (command.equals("list")) {
-                ui.list(taskList);
-            } else {
-                try {
-                    if (command.equals("delete")) {
-                        int n = sc.nextInt();
-                        taskList.delete(n);
-                    } else if (command.equals("done")) {
-                        int n = sc.nextInt();
-                        taskList.done(n);
-                    } else if (command.equals("todo")) {
-                        String input = sc.nextLine();
-                        taskList.addTodo(input);
-                    } else if (command.equals("deadline")) {
-                        String input = sc.nextLine();
-                        taskList.addDeadline(input);
-                    } else if (command.equals("event")) {
-                        String input = sc.nextLine();
-                        taskList.addEvent(input);
-                    } else if (command.equals("find")) {
-                        String input = sc.nextLine();
-                        ArrayList<Task> foundList = taskList.find(input);
-                        ui.findList(new TaskList(foundList, ui));
-                    } else {
-                        throw new DukeException("Invalid Command");
-                    }
-                } catch (DukeException ex) {
-                    ui.showInvalidCommand();
+    public String run() {
+        if (this.input.equals("bye")) {
+            return ui.bye();
+        } else if (this.input.equals("list")) {
+            return ui.list(taskList);
+        } else {
+            try {
+                int i = this.input.indexOf(' ');
+                String command = input.substring(0, i);
+                if (command.equals("delete")) {
+                    int n = Integer.parseInt(input.substring(i + 1));
+                    return taskList.delete(n);
+                } else if (command.equals("done")) {
+                    int n = Integer.parseInt(input.substring(i + 1));
+                    return taskList.done(n);
+                } else if (command.equals("todo")) {
+                    String desc = input.substring(i);
+                    return taskList.addTodo(desc);
+                } else if (command.equals("deadline")) {
+                    String desc = input.substring(i);
+                    return taskList.addDeadline(desc);
+                } else if (command.equals("event")) {
+                    String desc = input.substring(i);
+                    return taskList.addEvent(desc);
+                } else if (command.equals("find")) {
+                    String desc = input.substring(i);
+                    ArrayList<Task> foundList = taskList.find(desc);
+                    return ui.findList(new TaskList(foundList, ui));
+                } else {
+                    return ui.showInvalidDesc();
                 }
+            } catch (java.lang.StringIndexOutOfBoundsException e) {
+                return ui.showInvalidCommand();
             }
         }
     }
