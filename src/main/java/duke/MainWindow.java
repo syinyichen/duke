@@ -57,7 +57,7 @@ public class MainWindow extends AnchorPane {
         }
 
         //Greets the user
-        String greet = DukeStub.getResponse("Hello! I'm Duke\nWhat can I do for you?");
+        String greet = DukeStub.getResponse(ui.greet());
         dialogContainer.getChildren().addAll(
                 DialogBox.getDukeDialog(greet, duke)
         );

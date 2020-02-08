@@ -28,6 +28,8 @@ public class Parser {
     public String run() {
         if (this.input.equals("bye")) {
             return ui.bye();
+        } else if (this.input.equals("hello") || this.input.equals("hi")) {
+            return ui.greet();
         } else if (this.input.equals("list")) {
             return ui.list(taskList);
         } else {

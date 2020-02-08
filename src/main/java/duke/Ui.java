@@ -16,6 +16,13 @@ public class Ui {
     }
 
     /**
+     * Greets the user.
+     */
+    public String greet() {
+        return "Hello! I'm Duke\nWhat can I do for you?";
+    }
+
+    /**
      * Prints the list of tasks in the order of input.
      *
      * @param taskList A list which stores the tasks input by the user.
