@@ -44,7 +44,7 @@ public class MainWindow extends AnchorPane {
         try {
             taskList = new TaskList(storage.load(), ui);
         } catch (DukeException e) {
-            String err = DukeStub.getResponse(ui.showInvalideFile());
+            String err = DukeStub.getResponse(ui.showInvalidFile());
             dialogContainer.getChildren().addAll(
                     DialogBox.getDukeDialog(err, duke)
             );

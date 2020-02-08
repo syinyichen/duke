@@ -82,7 +82,7 @@ public class TaskList {
                 throw new DukeException("Invalid Todo Description");
             }
         } catch (DukeException ex) {
-            output = ui.showInvalidDesc();
+            output = ui.showEmptyTodoDesc();
         }
         return output;
     }
@@ -107,7 +107,9 @@ public class TaskList {
                 throw new DukeException("Invalid Deadline Description");
             }
         } catch (DukeException ex) {
-            output = ui.showInvalidDesc();
+            output = ui.showInvalidDeadlineDesc();
+        } catch (ArrayIndexOutOfBoundsException ex1) {
+            output = ui.showInvalidDeadlineDesc();
         }
         return output;
     }
@@ -132,7 +134,9 @@ public class TaskList {
                 throw new DukeException("Invalid Event Description");
             }
         } catch (DukeException ex) {
-            output = ui.showInvalidDesc();
+            output = ui.showInvalidEventDesc();
+        } catch (ArrayIndexOutOfBoundsException ex1) {
+            output = ui.showInvalidEventDesc();
         }
         return output;
     }
@@ -163,7 +167,7 @@ public class TaskList {
     public String toString() {
         String output = "";
         for (int i = 0; i < taskList.size(); i++) {
-            output += i + 1 + ". " + taskList.get(i).toString() + "\n";
+            output += "  " + (i + 1) + ".  " + taskList.get(i).toString() + "\n";
         }
         return output;
     }

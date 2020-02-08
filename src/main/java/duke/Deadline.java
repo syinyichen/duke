@@ -24,9 +24,9 @@ public class Deadline extends Task {
     @Override
     public String toString() {
         if (super.done) {
-            return "[D][DONE]" + super.instr;
+            return "[D][\u2713] " + super.instr;
         } else {
-            return "[D][INCOMPLETE]" + super.instr + " (by: "
+            return "[D][\u2718] " + super.instr + " (by: "
                     + time.format(DateTimeFormatter.ofPattern("MMM d yyyy HH:mm")) + ")";
         }
     }

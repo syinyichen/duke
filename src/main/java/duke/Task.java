@@ -39,9 +39,9 @@ public class Task {
     @Override
     public String toString() {
         if (done) {
-            return "[DONE] " + this.instr;
+            return "[\u2713] " + this.instr;
         } else {
-            return "[INCOMPLETE] " + this.instr;
+            return "[\u2718] " + this.instr;
         }
     }
 }

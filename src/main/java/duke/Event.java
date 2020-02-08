@@ -24,9 +24,9 @@ public class Event extends Task {
     @Override
     public String toString() {
         if (super.done) {
-            return "[E][DONE]" + super.instr;
+            return "[E][\u2713] " + super.instr;
         } else {
-            return "[E][INCOMPLETE]" + super.instr + " (at: "
+            return "[E][\u2718] " + super.instr + " (at: "
                     + time.format(DateTimeFormatter.ofPattern("MMM d yyyy HH:mm"))
                     + ")";
         }

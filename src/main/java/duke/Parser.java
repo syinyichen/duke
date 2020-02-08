@@ -52,12 +52,24 @@ public class Parser {
                 } else if (command.equals("find")) {
                     String desc = input.substring(i);
                     ArrayList<Task> foundList = taskList.find(desc);
-                    return ui.findList(new TaskList(foundList, ui));
+                    if (foundList.isEmpty()) {
+                        return ui.showTaskNotFound();
+                    } else {
+                        return ui.findList(new TaskList(foundList, ui));
+                    }
                 } else {
-                    return ui.showInvalidDesc();
+                    return ui.showInvalidCommand();
                 }
             } catch (java.lang.StringIndexOutOfBoundsException e) {
-                return ui.showInvalidCommand();
+                if (input.equals("todo")) {
+                    return ui.showEmptyTodoDesc();
+                } else if (input.equals("deadline")) {
+                    return ui.showEmptyDeadlineDesc();
+                } else if (input.equals("event")) {
+                    return ui.showEmptyEventDesc();
+                } else {
+                    return ui.showInvalidCommand();
+                }
             }
         }
     }

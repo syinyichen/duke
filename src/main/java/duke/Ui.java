@@ -80,16 +80,58 @@ public class Ui {
     }
 
     /**
-     * Prints a message to warn the user when the description for a task is empty.
+     * Prints a message to warn the user when the description for a deadline is invalid.
      */
-    public String showInvalidDesc() {
-        return "OOPS!!! The description of a task cannot be empty.";
+    public String showInvalidDeadlineDesc() {
+        return "OOPS!!! Wrong description format for deadline.\n\n" +
+                "Please enter your deadline in the format of: \n" +
+                "  \"deadline (description) /by (date & time)\"\n\n" +
+                "The date and time should be in the format of: \n" +
+                "  \"[yyyy-MM-dd HHmm]\"";
+    }
+
+    /**
+     * Prints a message to warn the user when the description for a event is invalid.
+     */
+    public String showInvalidEventDesc() {
+        return "OOPS!!! Wrong description format for event.\n" +
+                "  \"event (description) /at (date & time)\"\n\n" +
+                "The date and time should be in the format of: \n" +
+                "  \"[yyyy-MM-dd HHmm]\"";
+    }
+
+    /**
+     * Prints a message to warn the user when the description for a todo is empty.
+     */
+    public String showEmptyTodoDesc() {
+        return "OOPS!!! The description of a todo cannot be empty.";
+    }
+
+    /**
+     * Prints a message to warn the user when the description for a deadline is empty.
+     */
+    public String showEmptyDeadlineDesc() {
+        return "OOPS!!! The description of a deadline cannot be empty.";
+    }
+
+    /**
+     * Prints a message to warn the user when the description for a event is empty.
+     */
+    public String showEmptyEventDesc() {
+        return "OOPS!!! The description of a event cannot be empty.";
     }
 
     /**
      * Prints a message to warn the user when unable to read file.
      */
-    public String showInvalideFile() {
+    public String showInvalidFile() {
         return "OOPS!!! Unable to read the tasks in the file.";
+    }
+
+    /**
+     * Prints a message when the keyword the user is finding is unavailable.
+     */
+    public String showTaskNotFound() {
+        return "OOPS!!! The tasks you are searching for is unavailable.";
     }
 }

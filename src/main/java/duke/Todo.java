@@ -11,9 +11,9 @@ public class Todo extends Task {
     @Override
     public String toString() {
         if (super.done) {
-            return "[T][DONE]" + super.instr;
+            return "[T][\u2713] " + super.instr;
         } else {
-            return "[T][INCOMPLETE]" + super.instr;
+            return "[T][\u2718] " + super.instr;
         }
     }
 }
