@@ -31,6 +31,7 @@ public class TaskList {
         String output = "";
         try {
             if (index <= taskList.size()) {
+                assert index > 1: " Invalid Task Index";
                 Task delTask = taskList.get(index - 1);
                 taskList.remove(index - 1);
                 output = ui.delete(delTask, taskList.size());
@@ -38,6 +39,8 @@ public class TaskList {
                 throw new DukeException("Invalid Task Index");
             }
         } catch (DukeException ex) {
+            output = ui.showInvalidTaskIndex();
+        } catch (AssertionError ex1) {
             output = ui.showInvalidTaskIndex();
         }
         return output;
@@ -53,6 +56,7 @@ public class TaskList {
         String output = "";
         try {
             if (index <= taskList.size()) {
+                assert index > 1: " Invalid Task Index";
                 Task doneTask = taskList.get(index - 1);
                 doneTask.done();
                 output = ui.done(doneTask);
@@ -60,6 +64,8 @@ public class TaskList {
                 throw new DukeException("Invalid Task Index");
             }
         } catch (DukeException ex) {
+            output = ui.showInvalidTaskIndex();
+        } catch (AssertionError ex1) {
             output = ui.showInvalidTaskIndex();
         }
         return output;
