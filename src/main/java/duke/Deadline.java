@@ -11,6 +11,7 @@ public class Deadline extends Task {
 
     public Deadline(String instr, LocalDateTime time) {
         super(instr);
+        super.type = "DEADLINE";
         this.time = time;
     }
 

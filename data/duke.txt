@@ -1,7 +1,8 @@
-D | 1 | return book | 2019-12-10 1800
-E | 1 | project meeting | 2020-08-06 1400
-T | 1 | join sports club
-T | 0 | read book
+D | 0 | submit project | 2018-07-19 2359
 D | 1 | read book | 2019-08-07 1400
-T | 1 | buy book
+D | 1 | return book | 2019-12-10 1800
+E | 0 | project meeting | 2020-08-06 1400
+T | 0 | buy book
 T | 0 | buy groceries
+T | 0 | join sports club
+T | 0 | read book

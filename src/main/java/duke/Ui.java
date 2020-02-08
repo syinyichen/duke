@@ -54,6 +54,15 @@ public class Ui {
     }
 
     /**
+     * Prints a message to notify the user that a task's status has been changed to <code>incomplete</code>.
+     *
+     * @param doneTask Task that is completed
+     */
+    public String undone(Task doneTask) {
+        return "The task's status has been changed to incomplete: \n" + doneTask;
+    }
+
+    /**
      * Prints a message to notify the user that a new task has been added to the list.
      *
      * @param newTask Task to be added.
@@ -142,5 +151,16 @@ public class Ui {
      */
     public String showTaskNotFound() {
         return "OOPS!!! The tasks you are searching for is unavailable.";
+    }
+
+    /**
+     * Prints a message when the description for <code>sort</code> is invalid.
+     */
+    public String showInvalidSortDesc() {
+        return "OOPS!!! Wrong description format for sort.\n\n"
+                + "Please enter the message as the following formats: \n"
+                + "  \"sort /by time\", \n"
+                + "  \"sort /by task name\" or \n"
+                + "  \"sort /by task type\".\n";
     }
 }

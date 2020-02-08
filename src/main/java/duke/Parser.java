@@ -40,6 +40,9 @@ public class Parser {
                 } else if (command.equals("done")) {
                     int n = Integer.parseInt(input.substring(i + 1));
                     return taskList.done(n);
+                } else if (command.equals("undone")) {
+                    int n = Integer.parseInt(input.substring(i + 1));
+                    return taskList.undone(n);
                 } else if (command.equals("todo")) {
                     String desc = input.substring(i);
                     return taskList.addTodo(desc);
@@ -57,6 +60,9 @@ public class Parser {
                     } else {
                         return ui.findList(new TaskList(foundList, ui));
                     }
+                } else if (command.equals("sort")) {
+                    String desc = input.substring(i);
+                    return taskList.sort(desc);
                 } else {
                     return ui.showInvalidCommand();
                 }
@@ -67,6 +73,8 @@ public class Parser {
                     return ui.showEmptyDeadlineDesc();
                 } else if (input.equals("event")) {
                     return ui.showEmptyEventDesc();
+                } else if (input.equals("sort")) {
+                    return ui.showInvalidSortDesc();
                 } else {
                     return ui.showInvalidCommand();
                 }

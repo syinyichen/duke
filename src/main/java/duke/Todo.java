@@ -6,6 +6,7 @@ package duke;
 public class Todo extends Task {
     public Todo(String instr) {
         super(instr);
+        super.type = "TODO";
     }
 
     @Override

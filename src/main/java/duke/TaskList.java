@@ -3,6 +3,7 @@ package duke;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Represents the list which stores the tasks input by the user.
@@ -39,6 +40,8 @@ public class TaskList {
             }
         } catch (DukeException ex) {
             output = ui.showInvalidTaskIndex();
+        } catch (NumberFormatException ex1) {
+            output = ui.showInvalidTaskIndex();
         }
 
         return output;
@@ -66,8 +69,33 @@ public class TaskList {
             }
         } catch (DukeException ex) {
             output = ui.showInvalidTaskIndex();
+        } catch (NumberFormatException ex1) {
+            output = ui.showInvalidTaskIndex();
         }
+        return output;
+    }
 
+    /**
+     * Changes the indicated task's status to <code>incomplete</code>.
+     *
+     * @param index Index of a task in the list.
+     * @throws DukeException If the index input is unavailable in the list of tasks.
+     */
+    public String undone(int index) {
+        String output = "";
+        try {
+            if (index <= taskList.size() && index >= 1) {
+                Task doneTask = taskList.get(index - 1);
+                doneTask.undone();
+                output = ui.undone(doneTask);
+            } else {
+                throw new DukeException("Invalid Task Index");
+            }
+        } catch (DukeException ex) {
+            output = ui.showInvalidTaskIndex();
+        } catch (NumberFormatException ex1) {
+            output = ui.showInvalidTaskIndex();
+        }
         return output;
     }
 
@@ -160,6 +188,43 @@ public class TaskList {
             }
         }
         return foundList;
+    }
+
+    /**
+     * Sorts the task list in specific order.
+     *
+     * @param instr Description on how the list should be sorted.
+     * @throws DukeException If the description of the sort is invalid.
+     */
+    public String sort(String instr) {
+        String output = "";
+        String desc = "";
+        try {
+            if (!instr.isEmpty()) {
+                String[] splitBy = instr.split(" /by ");
+                desc = splitBy[1];
+            } else {
+                throw new DukeException("Invalid Sort Description");
+            }
+
+            if (desc.equals("time")) {
+                Collections.sort(taskList, new TaskComparatorByTime());
+                return ui.list(this);
+            } else if (desc.equals("task name")) {
+                Collections.sort(taskList, new TaskComparatorByName());
+                return ui.list(this);
+            } else if (desc.equals("task type")) {
+                Collections.sort(taskList, new TaskComparatorByType());
+                return ui.list(this);
+            } else {
+                throw new DukeException("Invalid Sort Description");
+            }
+        } catch (DukeException ex) {
+            output = ui.showInvalidSortDesc();
+        } catch (ArrayIndexOutOfBoundsException ex1) {
+            output = ui.showInvalidSortDesc();
+        }
+        return output;
     }
 
     /**

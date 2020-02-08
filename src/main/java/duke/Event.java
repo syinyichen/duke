@@ -11,6 +11,7 @@ public class Event extends Task {
 
     public Event(String instr, LocalDateTime time) {
         super(instr);
+        super.type = "EVENT";
         this.time = time;
     }
 
