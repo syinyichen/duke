@@ -9,8 +9,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
@@ -51,20 +51,34 @@ public class DialogBox extends HBox {
 
     }
 
+    /**
+     * Creates an user dialog box.
+     *
+     * @param text Message to be displayed in the user's dialog box.
+     * @param img Profile picture of the user.
+     * @return A user dialog box.
+     */
     public static DialogBox getUserDialog(String text, Image img) {
         var userDialog = new DialogBox(text, img);
-        userDialog.dialog.setStyle("-fx-background-image: url(images/UserBubble.png); " +
-                "-fx-background-size: stretch, contain; -fx-background-position: center; " +
-                "-fx-background-repeat: no-repeat no-repeat;");
+        userDialog.dialog.setStyle("-fx-background-image: url(images/UserBubble.png); "
+                + "-fx-background-size: stretch, contain; -fx-background-position: center; "
+                + "-fx-background-repeat: no-repeat no-repeat;");
         return userDialog;
     }
 
+    /**
+     * Creates a Duke dialog box.
+     *
+     * @param text Message to be displayed in Duke's dialog box.
+     * @param img Pofile picture of Duke.
+     * @return A Duke dialog box.
+     */
     public static DialogBox getDukeDialog(String text, Image img) {
         var dukeBubble = new DialogBox(text, img);
         dukeBubble.flip();
-        dukeBubble.dialog.setStyle("-fx-background-image: url(images/DukeBubble.png); " +
-                "-fx-background-size: stretch, contain; -fx-background-position: center; " +
-                "-fx-background-repeat: no-repeat no-repeat;");
+        dukeBubble.dialog.setStyle("-fx-background-image: url(images/DukeBubble.png); "
+                + "-fx-background-size: stretch, contain; -fx-background-position: center; "
+                + "-fx-background-repeat: no-repeat no-repeat;");
         return dukeBubble;
     }
 }

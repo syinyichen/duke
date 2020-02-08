@@ -30,8 +30,7 @@ public class TaskList {
     public String delete(int index) {
         String output = "";
         try {
-            if (index <= taskList.size()) {
-                assert index > 1: " Invalid Task Index";
+            if (index <= taskList.size() && index >= 1) {
                 Task delTask = taskList.get(index - 1);
                 taskList.remove(index - 1);
                 output = ui.delete(delTask, taskList.size());
@@ -40,9 +39,8 @@ public class TaskList {
             }
         } catch (DukeException ex) {
             output = ui.showInvalidTaskIndex();
-        } catch (AssertionError ex1) {
-            output = ui.showInvalidTaskIndex();
         }
+
         return output;
     }
 
@@ -55,19 +53,21 @@ public class TaskList {
     public String done(int index) {
         String output = "";
         try {
-            if (index <= taskList.size()) {
-                assert index > 1: " Invalid Task Index";
+            if (index <= taskList.size() && index >= 1) {
                 Task doneTask = taskList.get(index - 1);
-                doneTask.done();
-                output = ui.done(doneTask);
+                if (doneTask.isDone()) {
+                    output = ui.showAlreadyDone(doneTask);
+                } else {
+                    doneTask.done();
+                    output = ui.done(doneTask);
+                }
             } else {
                 throw new DukeException("Invalid Task Index");
             }
         } catch (DukeException ex) {
             output = ui.showInvalidTaskIndex();
-        } catch (AssertionError ex1) {
-            output = ui.showInvalidTaskIndex();
         }
+
         return output;
     }
 
@@ -154,7 +154,7 @@ public class TaskList {
      */
     public ArrayList<Task> find(String keyword) {
         ArrayList<Task> foundList = new ArrayList<Task>();
-        for (Task t: taskList) {
+        for (Task t:taskList) {
             if (t.getInstr().contains(keyword)) {
                 foundList.add(t);
             }

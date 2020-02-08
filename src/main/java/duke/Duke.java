@@ -20,7 +20,7 @@ public class Duke extends Application {
     public void start(Stage stage) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Duke.class.getResource("/view/MainWindow.fxml"));
-            AnchorPane ap = (AnchorPane) fxmlLoader.load();
+            AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
             stage.show();

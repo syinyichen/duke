@@ -65,6 +65,15 @@ public class Ui {
     }
 
     /**
+     * Prints a message to notify the user that a task is already completed.
+     *
+     * @param doneTask Task that is already completed
+     */
+    public String showAlreadyDone(Task doneTask) {
+        return "You have already completed the task: \n" + doneTask;
+    }
+
+    /**
      * Prints a message to warn the user when the system is unable to recognise the command.
      */
     public String showInvalidCommand() {
@@ -83,21 +92,21 @@ public class Ui {
      * Prints a message to warn the user when the description for a deadline is invalid.
      */
     public String showInvalidDeadlineDesc() {
-        return "OOPS!!! Wrong description format for deadline.\n\n" +
-                "Please enter your deadline in the format of: \n" +
-                "  \"deadline (description) /by (date & time)\"\n\n" +
-                "The date and time should be in the format of: \n" +
-                "  \"[yyyy-MM-dd HHmm]\"";
+        return "OOPS!!! Wrong description format for deadline.\n\n"
+                + "Please enter your deadline in the format of: \n"
+                + "  \"deadline (description) /by (date & time)\"\n\n"
+                + "The date and time should be in the format of: \n"
+                + "  \"[yyyy-MM-dd HHmm]\"";
     }
 
     /**
      * Prints a message to warn the user when the description for a event is invalid.
      */
     public String showInvalidEventDesc() {
-        return "OOPS!!! Wrong description format for event.\n" +
-                "  \"event (description) /at (date & time)\"\n\n" +
-                "The date and time should be in the format of: \n" +
-                "  \"[yyyy-MM-dd HHmm]\"";
+        return "OOPS!!! Wrong description format for event.\n"
+                + "  \"event (description) /at (date & time)\"\n\n"
+                + "The date and time should be in the format of: \n"
+                + "  \"[yyyy-MM-dd HHmm]\"";
     }
 
     /**

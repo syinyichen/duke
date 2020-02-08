@@ -4,3 +4,4 @@ T | 1 | join sports club
 T | 0 | read book
 D | 1 | read book | 2019-08-07 1400
 T | 1 | buy book
+T | 0 | buy groceries
