@@ -1,5 +1,7 @@
 package duke;
 
+import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -7,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -30,7 +33,7 @@ public class MainWindow extends AnchorPane {
     private Storage storage;
     private Image user = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private Image duke = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
-    private String filePath = "C:/Users/syiny/Desktop/Study/CS2103T/duke/data/duke.txt";
+    private String filePath = "../duke/data/duke.txt";
 
     @FXML
     public void initialize() throws FileNotFoundException {
@@ -41,7 +44,7 @@ public class MainWindow extends AnchorPane {
         try {
             taskList = new TaskList(storage.load(), ui);
         } catch (DukeException e) {
-            String err = DukeStub.getResponse("OOPS!!! Unable to read the tasks in the file.");
+            String err = DukeStub.getResponse(ui.showInvalideFile());
             dialogContainer.getChildren().addAll(
                     DialogBox.getDukeDialog(err, duke)
             );
@@ -70,5 +73,13 @@ public class MainWindow extends AnchorPane {
         );
         userInput.clear();
         storage.writeStorage(taskList);
+
+        if (input.equals("bye")) {
+            PauseTransition pause = new PauseTransition(Duration.seconds(1));
+            pause.setOnFinished(event -> {
+                Platform.exit();
+            });
+            pause.play();
+        }
     }
 }

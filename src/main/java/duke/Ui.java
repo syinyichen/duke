@@ -85,4 +85,11 @@ public class Ui {
     public String showInvalidDesc() {
         return "OOPS!!! The description of a task cannot be empty.";
     }
+
+    /**
+     * Prints a message to warn the user when unable to read file.
+     */
+    public String showInvalideFile() {
+        return "OOPS!!! Unable to read the tasks in the file.";
+    }
 }
