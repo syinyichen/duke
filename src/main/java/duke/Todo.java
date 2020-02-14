@@ -11,10 +11,10 @@ public class Todo extends Task {
 
     @Override
     public String toString() {
-        if (super.done) {
-            return "[T][\u2713] " + super.instr;
+        if (super.isDone) {
+            return "[T][" + super.tick + "] " + super.instr;
         } else {
-            return "[T][\u2718] " + super.instr;
+            return "[T][" + super.cross + "] " + super.instr;
         }
     }
 }

@@ -1,7 +1,5 @@
 package duke;
 
-import java.time.LocalDateTime;
-
 /**
  * Represents a task which an user input in the <code>Duke</code> chatbox.
  * A <code>Task</code> consists of 2 components:
@@ -11,26 +9,28 @@ import java.time.LocalDateTime;
 public class Task {
     String instr;
     String type;
-    boolean done;
+    boolean isDone;
+    final String tick = "\u2713";
+    final String cross = "\u2718";
 
     public Task(String instr) {
         this.instr = instr;
         this.type = "TASK";
-        this.done = false;
+        this.isDone = false;
     }
 
     /**
      * Changes the <code>Task</code>'s status to <code>done</code> when the task is completed.
      */
     public void done() {
-        this.done = true;
+        this.isDone = true;
     }
 
     /**
      * Changes the <code>Task</code>'s status to <code>incomplete</code>.
      */
     public void undone() {
-        this.done = false;
+        this.isDone = false;
     }
 
     /**
@@ -51,15 +51,15 @@ public class Task {
      * Indicates if the task is completed. Returns <code>true</code> when task is done.
      */
     public boolean isDone() {
-        return done;
+        return isDone;
     }
 
     @Override
     public String toString() {
-        if (done) {
-            return "[\u2713] " + this.instr;
+        if (isDone) {
+            return "[" + tick + "] " + this.instr;
         } else {
-            return "[\u2718] " + this.instr;
+            return "[" + cross + "] " + this.instr;
         }
     }
 }

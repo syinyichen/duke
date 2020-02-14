@@ -24,10 +24,10 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        if (super.done) {
-            return "[D][\u2713] " + super.instr;
+        if (super.isDone) {
+            return "[D][" + super.tick + "] " + super.instr;
         } else {
-            return "[D][\u2718] " + super.instr + " (by: "
+            return "[D][" + super.cross + "] " + super.instr + " (by: "
                     + time.format(DateTimeFormatter.ofPattern("MMM d yyyy HH:mm")) + ")";
         }
     }

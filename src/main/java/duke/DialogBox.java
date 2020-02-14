@@ -17,8 +17,14 @@ import javafx.scene.shape.Circle;
 import java.io.IOException;
 import java.util.Collections;
 
+/**
+ * Represents a a dialog box.
+ */
 public class DialogBox extends HBox {
 
+    //@@author JeffryLum-reused
+    //Reused from https://github.com/nus-cs2103-AY1920S2/duke/blob/master/tutorials/javaFxTutorialPart4.md
+    //with minor modifications
     @FXML
     private Label dialog;
     @FXML
@@ -81,4 +87,5 @@ public class DialogBox extends HBox {
                 + "-fx-background-repeat: no-repeat no-repeat;");
         return dukeBubble;
     }
+    //@@author
 }

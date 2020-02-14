@@ -55,17 +55,19 @@ public class TaskList {
      */
     public String done(int index) {
         String output = "";
+        Task doneTask;
         try {
             if (index <= taskList.size() && index >= 1) {
-                Task doneTask = taskList.get(index - 1);
-                if (doneTask.isDone()) {
-                    output = ui.showAlreadyDone(doneTask);
-                } else {
-                    doneTask.done();
-                    output = ui.done(doneTask);
-                }
+                doneTask = taskList.get(index - 1);
             } else {
                 throw new DukeException("Invalid Task Index");
+            }
+
+            if (doneTask.isDone()) {
+                output = ui.showAlreadyDone(doneTask);
+            } else {
+                doneTask.done();
+                output = ui.done(doneTask);
             }
         } catch (DukeException ex) {
             output = ui.showInvalidTaskIndex();

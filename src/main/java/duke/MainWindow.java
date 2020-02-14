@@ -40,6 +40,8 @@ public class MainWindow extends AnchorPane {
      */
     @FXML
     public void initialize() throws FileNotFoundException {
+        //@@author JeffryLum-reused
+        //Reused from https://github.com/nus-cs2103-AY1920S2/duke/blob/master/tutorials/javaFxTutorialPart4.md
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
 
         ui = new Ui();
@@ -64,11 +66,15 @@ public class MainWindow extends AnchorPane {
     }
 
     /**
-     * Creates two dialog boxes, one echoing user input and the other containing Duke's reply and then appends them to
-     * the dialog container. Clears the user input after processing.
+     * Gets the user input and prints the responses.
+     *
+     * @throws IOException When the file to store the tasks is unavailable.
      */
     @FXML
     private void handleUserInput() throws IOException {
+        //@@author JeffryLum-reused
+        //Reused from https://github.com/nus-cs2103-AY1920S2/duke/blob/master/tutorials/javaFxTutorialPart4.md
+        // with minor modifications
         String input = userInput.getText();
         parser = new Parser(ui, taskList, input);
         String response = DukeStub.getResponse(parser.run());
@@ -77,13 +83,17 @@ public class MainWindow extends AnchorPane {
                 DialogBox.getDukeDialog(response, duke)
         );
         userInput.clear();
+        //@@author
         storage.writeStorage(taskList);
 
         if (input.equals("bye")) {
+            //@@author CheyanneSim-reused
+            //Reused with minor modification
             PauseTransition pause = new PauseTransition(Duration.seconds(1));
             pause.setOnFinished(event -> {
                 Platform.exit();
             });
+            //@@author
             pause.play();
         }
     }
