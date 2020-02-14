@@ -42,13 +42,13 @@ A _todo_ task will be added to the tasks list.
 ### Adds a _deadline_: `deadline (task descriptions) /by (date and time)`
 A _deadline_ will be added to the tasks list.
 
-__Kindly take note that the date and time should be in the format of _yyyy-MM-dd HHmm_.__
+Kindly take note that the date and time should be in the format of _yyyy-MM-dd HHmm_.
 
 
 ### Adds an _event_: `event (task descriptions) /at (date and time)`
 An _event_ will be added to the tasks list.
 
-__Kindly take note that the date and time should be in the format of _yyyy-MM-dd HHmm_.__
+Kindly take note that the date and time should be in the format of _yyyy-MM-dd HHmm_.
 
 
 ### Lists out the tasks: `list`

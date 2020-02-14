@@ -31,15 +31,15 @@ public class MainWindow extends AnchorPane {
 
     private Image user = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private Image duke = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
-    private String filePath = "../duke/data/duke.txt";
+    private String filePath = "data/duke.txt";
 
     /**
      * Loads tasks from file and greets the user.
      *
-     * @throws FileNotFoundException When the file to store the tasks is not found.
+     * @throws IOException When the file to store the tasks is not found.
      */
     @FXML
-    public void initialize() throws FileNotFoundException {
+    public void initialize() throws IOException {
         //@@author JeffryLum-reused
         //Reused from https://github.com/nus-cs2103-AY1920S2/duke/blob/master/tutorials/javaFxTutorialPart4.md
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());

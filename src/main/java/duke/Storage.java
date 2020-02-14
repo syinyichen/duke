@@ -1,9 +1,10 @@
 package duke;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -22,11 +23,21 @@ public class Storage {
      * Constructor of the class, Storage.
      *
      * @param filePath Path of the file to store the output.
-     * @throws FileNotFoundException If the file to store the output is not found.
+     * @throws IOException If the file to store the output is not found.
      */
-    public Storage(String filePath) throws FileNotFoundException {
+    public Storage(String filePath) throws IOException {
+        String[] path = filePath.split("/");
+        String root = Paths.get("").toAbsolutePath().toString();
         this.filePath = filePath;
         this.file = new File(filePath);
+
+        if (!file.exists()) {
+            try {
+                Files.createDirectories(Paths.get(root + File.separator + path[0]));
+                Files.createFile(Paths.get(root + File.separator + path[0] + File.separator + path[1]));
+            } catch (IOException e) {}
+        }
+
         scFile = new Scanner(file);
         this.taskList = new ArrayList<Task>();
     }
