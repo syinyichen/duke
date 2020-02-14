@@ -31,8 +31,7 @@ public class TaskList {
     public String delete(int index) {
         String output = "";
         try {
-            if (index <= taskList.size()) {
-                assert index > 1: " Invalid Task Index";
+            if (index <= taskList.size() && index >= 1) {
                 Task delTask = taskList.get(index - 1);
                 taskList.remove(index - 1);
                 output = ui.delete(delTask, taskList.size());
@@ -42,8 +41,6 @@ public class TaskList {
         } catch (DukeException ex) {
             output = ui.showInvalidTaskIndex();
         } catch (NumberFormatException ex1) {
-            output = ui.showInvalidTaskIndex();
-        } catch (AssertionError ex1) {
             output = ui.showInvalidTaskIndex();
         }
 
