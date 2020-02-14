@@ -1,60 +1,77 @@
 # User Guide
 
+
 ## Features 
 
 ### Add tasks
 You can add and classify your tasks into three types: _todo_, _deadline_, and _event_.
 
+
 ### List out the tasks
 Duke lists out the tasks you have added previously.
+
 
 ### Add status to a task
 You can mark your task as _done_ or _undone_.
 
+
 ### Delete a task
 You can delete an unwanted task from the existing tasks.
 
+
 ### Find tasks
 You can search for tasks based on their descriptions.
+
 
 ### Sort the tasks
 You can sort your tasks in the list by _time_ (time which the task has to be done), 
 _task type_ (type of the tasks) and _task name_ (name of the task, in alphabetical order).
 
+
+
 ## Usage
 
-### `hello` or `hi` - Greets Duke.
+### Greets Duke: `hello` or `hi`
 Duke will greet back. 
 
-### `todo (task descriptions)` - Adds a _todo_ task.
+
+### Adds a _todo_ task: `todo (task descriptions)`
 A _todo_ task will be added to the tasks list.
 
-### `deadline (task descriptions) /by (date and time)` - Adds a _deadline_.
+
+### Adds a _deadline_: `deadline (task descriptions) /by (date and time)`
 A _deadline_ will be added to the tasks list.
 
-Kindly take note that the date and time should be in the format of _yyyy-MM-dd HHmm_.
+__Kindly take note that the date and time should be in the format of _yyyy-MM-dd HHmm_.__
 
-### `event (task descriptions) /at (date and time)` - Adds an _event_.
+
+### Adds an _event_: `event (task descriptions) /at (date and time)`
 An _event_ will be added to the tasks list.
 
-Kindly take note that the date and time should be in the format of _yyyy-MM-dd HHmm_.
+__Kindly take note that the date and time should be in the format of _yyyy-MM-dd HHmm_.__
 
-### `list` - Lists out the tasks.
+
+### Lists out the tasks: `list`
 Duke will list out the existing tasks.
 
-### `done (task's index)` - Marks a task as done.
-The status of the task will be marked as done.
 
-### `undone (task's index)` - Marks a task as undone.
-The status of the task will be marked as undone.
+### Marks a task as _done_: `done (task's index)`
+The status of the task will be marked as _done_.
 
-### `delete (task's index)` - Deletes a tasks.
+
+### Marks a task as _undone_: `undone (task's index)`
+The status of the task will be marked as _undone_.
+
+
+### Deletes a task: `delete (task's index)`
 The task will be removed from the tasks list.
 
-### `find (keyword)` - Finds tasks.
+
+### Finds tasks: `find (keyword)`
 A list of tasks consisting of the keyword will be returned.
 
-### `sort /by (description)` - Sorts the tasks list.
+
+### Sorts the tasks list: `sort /by (description)`
 * To sort the tasks list by _time_ (in ascending order):
   * Kindly input: `sort /by time`
 * To sort the tasks list by _task type_ (categorise the tasks by their types):
@@ -62,4 +79,5 @@ A list of tasks consisting of the keyword will be returned.
 * To sort the tasks list by _task name_ (in alphabetical order):
   * Kindly input: `sort /by task name`
 
-### `bye` - Exits the window.
+
+### Exits the window: `bye`
